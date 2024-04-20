@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Formulario Actualizar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    </head>
+
+    <body style="background-color:#F2F3F4;">
+        <div class="container text-center">
+            <h2>***Formulario Actualizar***</h2>
+            <h5><a href="/">Volver a pagina principal</a></h5>
+            <!--<h5><a href="/lista">Volver a la lista</a></h5>-->
+            
+
+            <form action="/actualizar/{{alum.id}}" method="post">
+                {% csrf_token %}
+                
+                <input type="text" name="txtnom" value="{{alum.nombre}}" placeholder="Nombre del Alumno" required class="form-control form-control-lg" />
+
+                <br/>
+
+                <input type="text" name="txtape" value= "{{alum.apellido}}" placeholder="Apellido del Alumno" required class="form-control form-control-lg" />
+
+                <br/>
+
+                <input type="number" name="txtmatri" value="{{alum.matricula}}" min="1" max="9999999" placeholder="Matricula" required class="form-control form-control-lg" />
+
+                <br/>
+    
+                <!--ComboBox-->
+                <select name="cbocamp" required class="form-select form-select-lg">
+                    <option value="">Seleccione el Campus</option>
+
+
+                    {% if alum.campus == 'Coyoacan' %}
+                        <option value="Coyoacan" selected>Coyoacan</option>
+                    {% else %}
+                    <option value="Coyoacan">Coyoacan</option>
+                    {%endif%}
+
+                    {% if alum.campus == 'Lomas Verdes'%}
+                        <option value="Lomas Verdes" selected>Lomas Verdes</option>
+                    {% else %}
+                        <option value="Lomas Verdes">Lomas Verdes</option>
+                    {%endif%}
+
+                    {% if alum.campus == 'Cuernavaca' %}
+                        <option value="Cuernavaca" selected>Cuernavaca</option>
+                    {% else %}
+                        <option value="Cuernavaca">Cuernavaca</option>
+                    {%endif%}
+                </select>
+
+                <br/>
+
+                <select name="cbocarre" required class="form-select form-select-lg">
+                    <option value="">Seleccione la Carrera</option>
+
+                    {% if alum.carrera == 'Ing en Sistemas' %}
+                        <option value="Ing en Sistemas" selected>Ing en Sistemas</option>
+                    {% else %}
+                        <option value="Ing en Sistemas">Ing en Sistemas</option>
+                    {% endif %}
+
+                    {% if alum.carrera == 'Ing en Mecatronica' %}
+                        <option value="Ing Mecatronica" selected>Ing Mecatronica</option>
+                    {% else %}
+                    <option value="Ing Mecatronica">Ing Mecatronica</option>
+                    {% endif %}
+
+                    {% if alum.carrera == 'Ing Aeroespacial' %}
+                        <option value="Ing Aeroespacial" selected>Ing Aeroespacial</option>
+                    {% else %}
+                        <option value="Ing Aeroespacial">Ing Aeroespacial</option>
+                    {% endif%}
+                </select>
+
+                <br/>
+
+                <input type="number" name="txtsem" value= "{{alum.semestre}}" min="1" max="9999999" placeholder="Semestre" required class="form-control form-control-lg" />
+                
+                <br/>
+
+                <input type="number" name="txtmate" value= "{{alum.materias}}" min="1" max="9999999" placeholder="Materias" required class="form-control form-control-lg" />
+
+                <br/>
+                
+                <input type="submit" value="Guardar Datos" class="btn btn-danger" style="width:100%"/>
+            </form>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    </body>
+</html>
